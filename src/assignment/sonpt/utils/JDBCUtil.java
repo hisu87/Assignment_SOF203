@@ -8,7 +8,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author sonpt_ph19600
+ * @author Hisu
  * DBContext
  */
 public class JDBCUtil {
@@ -16,31 +16,33 @@ public class JDBCUtil {
     private static Connection conn;
 
     public static Connection getConnection() {
-        if (conn == null) {
-            String server = "PTS\\SQLEXPRESS";
+    if (conn == null) {
+        // existing code...
+         String server = "HISU";
             String user = "sa";
-            String password = "123456";
-            String db = "FPL_DaoTao";
-            int port = 1433;
+            String password = "0807";
+            String db = "fpl_daotao";
+            
             SQLServerDataSource dataSource = new SQLServerDataSource();
             
             dataSource.setUser(user);
             dataSource.setPassword(password);
             dataSource.setDatabaseName(db);
             dataSource.setServerName(server);
-            dataSource.setPortNumber(port);
-            dataSource.setEncrypt(false);
-            try {
-                conn = dataSource.getConnection();
-//                conn.setAutoCommit(false);
-//                conn.commit();
-            } catch (SQLServerException ex) {
-                ex.printStackTrace();
-            } catch (SQLException ex) {
-                Logger.getLogger(JDBCUtil.class.getName()).log(Level.SEVERE, null, ex);
+            dataSource.setEncrypt(false); // Disable SSL
+
+        try {
+            conn = dataSource.getConnection();
+            if (conn == null) {
+                throw new SQLException("Failed to create connection");
             }
+        } catch (SQLServerException ex) {
+            ex.printStackTrace();
+        } catch (SQLException ex) {
+            Logger.getLogger(JDBCUtil.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return JDBCUtil.conn;
     }
+    return JDBCUtil.conn;
+}
     
 }

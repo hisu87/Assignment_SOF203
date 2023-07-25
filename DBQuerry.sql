@@ -1,7 +1,7 @@
-﻿CREATE DATABASE fpl_daotao
-GO
-USE fpl_daotao
-Go
+﻿--CREATE DATABASE fpl_daotao
+--GO
+--USE fpl_daotao
+--Go
 
 CREATE TABLE students(
 	id INT IDENTITY(1,1) PRIMARY KEY,
@@ -40,14 +40,14 @@ INSERT INTO grade VALUES
 	(1, 5, 7, 9),
 	(2, 9, 8, 7),
 	(3, 9, 8, 9),
-	(4, 5, 3, 5),
-GO
-INSERT INTO users VALUES ('daotao1', 'Daotao1', 0), ('giangvien1', 'Giangvien1', 1)
-
-DELETE FROM Students WHERE StudentId LIKE 'PH224'
-SELECT * FROM USERS
-SELECT * FROM Students
-SELECT * FROM Grade
+	(4, 5, 3, 5)
+	go
+INSERT INTO users VALUES ('daotao1', 'Daotao1', 0), ('giangvien1', 'Giangvien1', 1);
+go
+DELETE FROM Students WHERE student_code LIKE 'PH224';
+SELECT * FROM USERS;
+SELECT * FROM Students;
+SELECT * FROM Grade;
 
 DELETE FROM Grade
 
